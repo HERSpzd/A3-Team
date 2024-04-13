@@ -15,6 +15,7 @@ public class PengPlayerControl : MonoBehaviour
    private float movementY;
    private int count;
    public TextMeshProUGUI countText;
+   public GameObject winTextObject;
 
    // Speed at which the player moves.
    public float speed = 0; 
@@ -26,6 +27,7 @@ public class PengPlayerControl : MonoBehaviour
       rb = GetComponent<Rigidbody>();
       count = 0;
       SetCountText();
+      winTextObject.SetActive(false);
    }
  
    // This function is called when a move input is detected.
@@ -41,7 +43,11 @@ public class PengPlayerControl : MonoBehaviour
 
     void SetCountText()
    {
-       countText.text =  "Count: " + count.ToString();
+      countText.text =  "Count: " + count.ToString();
+      if (count >= 5)
+       {
+           winTextObject.SetActive(true);
+       }
    }
   
 
